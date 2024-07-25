@@ -6,7 +6,7 @@ from pinecone import Pinecone, ServerlessSpec
 import os
 
 
-loader = PyPDFLoader("C:\\Users\\Dell\\DeepSolv\RAG_pipeline_with_langchain\\Apple_Vision_Pro_Privacy_Overview.pdf")
+loader = PyPDFLoader("Apple_Vision_Pro_Privacy_Overview.pdf")
 pages = loader.load_and_split()
 
 # loader = TextLoader("dialogs.txt")
