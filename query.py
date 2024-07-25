@@ -4,7 +4,7 @@ from langchain_core.prompts import PromptTemplate
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain
 import os
-query = "Which school do you attend?"
+query = "What about transparency and control of apple vison Pro"
 from dotenv import load_dotenv
 load_dotenv()
 groq_api_key=os.environ['GORQ_API_KEY']
@@ -20,7 +20,7 @@ chat = ChatGroq(
 # print(chat)
 
 template = """
-you need to answer Question based on Context.
+you need to answer Question based on Context and you are apple sales bot.
 
 <Context>: {context}
 <Question>: {question}
