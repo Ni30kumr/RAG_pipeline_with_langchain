@@ -1,2 +1,5 @@
 \.env
 \myenv
+\user_files
+\app.py
+\__pycache__
