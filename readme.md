@@ -1,44 +1,56 @@
-# Dynamic RAG-based Question Answering System
+# RAG-based User Bot System
 
-This project implements a dynamic Retrieval-Augmented Generation (RAG) system for question answering using LangChain, Pinecone, and Groq.
+This project implements a Retrieval-Augmented Generation (RAG) based user bot system using FastAPI, SQLAlchemy, and Pinecone. It allows users to create accounts, upload PDFs, and query a bot trained on their uploaded documents.
 
 ## Features
 
-- Dynamic document loading and splitting
-- Embedding generation using Hugging Face models
-- Vector storage with Pinecone
-- Question answering using Groq's language models
+- User registration and authentication
+- PDF document upload for each user
+- Custom bot creation for each user based on their uploaded documents
+- Query interface for user-specific bots
+- User search functionality
+- User deletion with associated data cleanup
 
-## Prerequisites
+## Technologies Used
 
-- Python 3.7+
-- Pinecone API key
-- Groq API key
+- FastAPI: For creating the API endpoints
+- SQLAlchemy: For database operations
+- Pinecone: For vector storage and similarity search
+- LangChain: For creating the RAG pipeline
+- HuggingFace Transformers: For embeddings
+- MySQL: As the relational database
 
-## Installation
+## Project Structure
+
+- `main.py`: The main FastAPI application
+- `user_manager.py`: Contains the UserManager class with user-related operations
+- `database.py`: Database connection and session management
+- `models.py`: SQLAlchemy models for the database
+- `lang_data.py`: Functions for creating and managing Pinecone indexes
+- `query.py`: Functions for creating the RAG chain and querying the bot
+
+## Setup and Installation
 
 1. Clone the repository:
-2. Install required packages: pip -r requirements.txt
-3. Set up environment variables:
-Create a `.env` file in the project root and add your API keys:
+2. Install the required dependencies:
+3. Set up your MySQL database and update the `URL_DATABASE` in `database.py` with your credentials.
+4. Set up your Pinecone account and add your API key to a `.env` file:
+## API Endpoints
+
+- POST `/users/`: Create a new user
+- POST `/users/{user_id}/setup_bot`: Upload a PDF and set up a bot for a user
+- POST `/users/{user_id}/query`: Query a user's bot
+- GET `/users/search`: Search for users by username or email
+- POST `/users/delete`: Delete a user and their associated data
+
 ## Usage
 
-1. Prepare your data:
-Place your text data in a file named `dialogs.txt` in the project root.
+1. Create a new user using the `/users/` endpoint.
+2. Upload a PDF and set up a bot for the user using the `/users/{user_id}/setup_bot` endpoint.
+3. Query the bot using the `/users/{user_id}/query` endpoint.
+4. Search for users using the `/users/search` endpoint.
+5. Delete a user and their data using the `/users/delete` endpoint.
 
-2. Configure `lang_data.py`:
-- Adjust `chunk_size` and `chunk_overlap` in `RecursiveCharacterTextSplitter` as needed.
-- Modify the Hugging Face model name if desired.
-- Change the Pinecone index name and settings if necessary.
+## Contributing
 
-3. Run the data processing and indexing:
-4. Use the question answering system:
-Edit `query.py` to set your question, then run:
-
-## Customization
-
-- To use a different document loader, modify the `loader` in `lang_data.py`.
-- To change the embedding model, update the `model_name` in `lang_data.py`.
-- To use a different Groq model, modify the `model` parameter in `ChatGroq` initialization in `query.py`.
-- Adjust the prompt template in `query.py` to customize the system's behavior.
-
+Contributions are welcome! Please feel free to submit a Pull Request.
