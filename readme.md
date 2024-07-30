@@ -35,6 +35,7 @@ This project implements a Retrieval-Augmented Generation (RAG) based user bot sy
 2. Install the required dependencies:
 3. Set up your MySQL database and update the `URL_DATABASE` in `database.py` with your credentials.
 4. Set up your Pinecone account and add your API key to a `.env` file:
+5. Host fastapi app by uvicorn main:app --reload
 ## API Endpoints
 
 - POST `/users/`: Create a new user
